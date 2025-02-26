@@ -13,8 +13,8 @@ import { WaveLengthUnit } from "./WaveLengthUnits";
 export const WavenumberRangeSlider: React.FC = () => {
   const { control, setValue } = useFormContext();
   const { simulateSlitUnit: isUnitChanged } = useFromStore();
-  const minRange = isUnitChanged ? 1000 : 500;
-  const maxRange = isUnitChanged ? 20000 : 10000;
+  const minRange = isUnitChanged ? 300 : 1000;
+  const maxRange = isUnitChanged ? 10000 : 20000;
 
   const [lowerRange, setLowerRange] = React.useState<number | any>(1900);
   const [upperRange, setUpperRange] = React.useState<number | any>(2300);
