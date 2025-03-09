@@ -8,6 +8,7 @@ import ReactGA from "react-ga4";
 import { PlotSettings, Spectrum } from "../constants";
 import { formSchema } from "../modules/form-schema";
 import useFromStore from "../store/form";
+import computeX from "../utils/computeX";
 import { Database as DatabaseField } from "./fields/Database";
 import { Mode } from "./fields/Mode";
 import { TGas } from "./fields/TGas";
@@ -176,6 +177,19 @@ export const Form: React.FunctionComponent<FormProps> = ({
           handleBadResponse(response.error);
           setDisableDownloadButton(true);
         } else {
+          const x = computeX(
+            response.data.x.min,
+            response.data.x.max,
+            response.data.x.step,
+            response.data.x.resample
+          );
+
+          const formattedData = {
+            x: x,
+            y: response.data.y,
+            units: response.data.units,
+          };
+
           setSpectra([
             ...(appendSpectrum ? spectra : []),
             {
@@ -187,7 +201,7 @@ export const Form: React.FunctionComponent<FormProps> = ({
               pressure: data.pressure,
               pressure_units: data.pressure_units,
               wavelength_units: data.wavelength_units,
-              ...response.data,
+              ...formattedData,
             },
           ]);
           setDisableAddToPlotButton(false);

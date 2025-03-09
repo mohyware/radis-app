@@ -13,4 +13,9 @@ def test_calc_spectrum():
     assert "y" in data
     assert "units" in data
 
+    assert isinstance(data["x"], dict)
+    assert "min" in data["x"]
+    assert "max" in data["x"]
+    assert "step" in data["x"]
+    assert "resample" in data["x"]
 

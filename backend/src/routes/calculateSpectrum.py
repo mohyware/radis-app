@@ -33,22 +33,34 @@ async def calc_spectrum(payload: Payload):
         # to remove the nan values from x and y
         x = xNan[~np.isnan(xNan)]
         y = yNan[~np.isnan(yNan)]
+
+        # to compute X  on the client side.
+        x_min, x_max = x[0], x[-1]
+        if len(x) > 1:
+            x_step = x[1] - x[0]
+        else:
+            x_step = None
+        resample = None
+
         # Reduce payload size
         threshold = 5e7
         if len(spectrum) * 8 * 2 > threshold:
             print("Reducing the payload size")
             # Setting return payload size limit of 50 MB
             # one float is about 8 bytes
-            # we return 2 arrays (w, I)
-            #     (note: we could avoid returning the full w-range, and recompute it on the client
-            #     from the x min, max and step --> less data transfer. TODO )
+            # we return only one array (I), while the other one (W) is computed on the client side.
             resample = int(len(spectrum) * 8 * 2 // threshold)
-            x, y = x[::resample], y[::resample]
+            y = y[::resample]
 
         return {
             "data": {
-                "x": list(x),
                 "y": list(y),
+                "x":{
+                "min" : x_min,
+                "max" : x_max,
+                "step" : x_step,
+                "resample" :resample,
+                },
                 "units": spectrum.units[payload.mode],
             },
         }
