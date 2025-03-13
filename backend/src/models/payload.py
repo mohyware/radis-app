@@ -12,7 +12,7 @@ class Payload(BaseModel):
     tvib: Optional[float] = None
     trot: Optional[float] = None
     path_length: float
-    simulate_slit: Optional[int] = None
+    simulate_slit: Optional[float] = None
     use_simulate_slit: bool
     mode: Literal[
         "absorbance",
