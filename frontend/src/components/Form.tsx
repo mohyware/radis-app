@@ -80,6 +80,57 @@ export const Form: React.FunctionComponent<FormProps> = ({
     formState: { dirtyFields },
   } = methods;
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    const updateField = <T extends keyof FormValues>(key: T) => {
+      const value = params.get(key);
+      console.log("dirtyFields", key, value);
+      if (value !== null) {
+        if (
+          [
+            "database",
+            "mode",
+            "tgas",
+            "tvib",
+            "trot",
+            "pressure",
+            "path_length",
+            "simulate_slit",
+            "min_wavenumber_range",
+            "max_wavenumber_range",
+          ].includes(key)
+        ) {
+          // @ts-ignore
+          setValue(key, value as unknown as FormValues[T]);
+        } else if (key === "use_simulate_slit") {
+          // @ts-ignore
+          setValue(key, value === "true");
+        }
+      }
+    };
+    // Handle "species"
+    const molecules = params.getAll("molecule");
+    const moleFractions = params.getAll("mole_fraction");
+
+    if (molecules.length > 0 && moleFractions.length > 0) {
+      // @ts-ignore
+      const speciesList: Species[] = molecules.map((mol, index) => ({
+        molecule: mol,
+        mole_fraction: parseFloat(moleFractions[index] || "0"),
+      }));
+      setValue("species", speciesList);
+    }
+
+    Object.keys(methods.getValues()).forEach((key) =>
+      updateField(key as keyof FormValues)
+    );
+
+    if (params) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  }, [setValue]);
+
   const databaseWatch = watch("database");
   React.useEffect(() => {
     if (databaseWatch === Database.GEISA) {
