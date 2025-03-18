@@ -16,13 +16,14 @@ export const WavenumberRangeSlider: React.FC = () => {
   const minRange = isUnitChanged ? 300 : 1000;
   const maxRange = isUnitChanged ? 10000 : 20000;
 
-  const [lowerRange, setLowerRange] = React.useState<number | any>(1900);
-  const [upperRange, setUpperRange] = React.useState<number | any>(2300);
+  const [lowerRange, setLowerRange] = React.useState<number>(1900);
+  const [upperRange, setUpperRange] = React.useState<number>(2300);
 
   React.useEffect(() => {
-    setValue("min_wavenumber_range", lowerRange === "" ? minRange : lowerRange);
-    setValue("max_wavenumber_range", upperRange === "" ? maxRange : upperRange);
+    setValue("min_wavenumber_range", lowerRange ?? minRange);
+    setValue("max_wavenumber_range", upperRange ?? maxRange);
   }, [lowerRange, upperRange, setValue, minRange, maxRange]);
+  
   const handleSliderChange = (_event: Event, value: number | number[]) => {
     value = value as [number, number];
     setLowerRange(value[0]);
