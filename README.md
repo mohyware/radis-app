@@ -18,7 +18,7 @@ Radis app leverages **React 18** to offer the user interface, and **FastApi** on
 ```bash
 cd frontend  # go to frontend directory
 yarn install # install all dependencies
-yarn start # to start local dev server
+yarn dev # to start local dev server
 ```
 
 - **setup backend**
