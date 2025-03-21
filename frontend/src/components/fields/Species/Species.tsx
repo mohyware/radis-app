@@ -30,6 +30,7 @@ export const Species: React.FC<SpeciesProps> = ({
     <Grid container spacing={3}>
       {fields.map((field, index) => (
         <React.Fragment key={field.id}>
+          {/* Molecule Selector Field */}
           <Grid item xs={6}>
             <Controller
               name={`species.${index}.molecule` as const}
@@ -39,7 +40,7 @@ export const Species: React.FC<SpeciesProps> = ({
                   validationError={formState.errors?.species?.[index]?.molecule}
                   control={control}
                   value={field.value}
-                  onChange={(_, value) => {
+                  onChange={(value) => {
                     field.onChange(value);
                   }}
                   autofocus={index !== 0}
@@ -49,7 +50,9 @@ export const Species: React.FC<SpeciesProps> = ({
               )}
             />
           </Grid>
-          <Grid item xs={4}>
+
+          {/* Mole Fraction Field */}
+          <Grid item xs={5}>
             <Controller
               name={`species.${index}.mole_fraction` as const}
               control={control}
@@ -81,6 +84,35 @@ export const Species: React.FC<SpeciesProps> = ({
               )}
             />
           </Grid>
+
+          {/* Isotope Field */}
+          <Grid item xs={10}>
+            <Controller
+              name={`species.${index}.isotope` as const}
+              control={control}
+              render={({ field: { onChange, value }, formState }) => (
+                <FormControl>
+                  <FormLabel>Isotopes</FormLabel>
+                  <Input
+                    id="isotope-input"
+                    error={!!formState.errors?.species?.[index]?.isotope}
+                    value={value}
+                    onChange={(e) => {
+                      onChange(e.target.value);
+                    }}
+                    placeholder="e.g., all or 1,2,3"
+                  />
+                  {formState.errors?.species?.[index]?.isotope && (
+                    <FormHelperText sx={{ color: "red" }}>
+                      {formState.errors?.species?.[index]?.isotope?.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
+              )}
+            />
+          </Grid>
+
+          {/* Add/Remove Species Buttons */}
           <Grid item xs={2} style={{ marginTop: 24 }}>
             {index === 0 ? (
               <IconButton

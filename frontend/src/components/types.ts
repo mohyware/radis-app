@@ -1,6 +1,7 @@
 export type Species = {
   molecule: string;
   mole_fraction: number;
+  isotope: string;
 };
 
 export enum Database {

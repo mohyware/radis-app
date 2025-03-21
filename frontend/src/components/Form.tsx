@@ -68,7 +68,9 @@ export const Form: React.FunctionComponent<FormProps> = ({
   //TODO - we need to make it global
 
   const methods = useForm<FormValues>({
-    defaultValues: { species: [{ molecule: "CO", mole_fraction: 0.1 }] },
+    defaultValues: {
+      species: [{ molecule: "CO", mole_fraction: 0.1, isotope: "1,2,3" }],
+    },
     resolver: yupResolver(formSchema),
   });
 

@@ -59,6 +59,13 @@ export const formSchema = yup.object().shape({
         .number()
         .required("Mole fraction must be defined")
         .typeError("Mole fraction must be defined"),
+      isotope: yup
+        .string()
+        .required("Isotope is required")
+        .matches(
+          /^(\d+,)*\d+$|^all$/,
+          "Invalid format. Use 'all' or numbers separated by commas."
+        ),
     })
   ),
   simulate_slit: yup

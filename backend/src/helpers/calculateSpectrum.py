@@ -13,8 +13,7 @@ def calculate_spectrum(payload: Payload):
         mole_fraction={
             species.molecule: species.mole_fraction for species in payload.species
         },
-        # TODO: Hard-coding "1,2,3" as the isotopologue for the time-being
-        isotope={species.molecule: "1,2,3" for species in payload.species},
+        isotope={species.molecule: species.isotope for species in payload.species},
         pressure=payload.pressure * eval(payload.pressure_units),
         Tgas=payload.tgas,
         Tvib=payload.tvib,
