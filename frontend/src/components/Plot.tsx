@@ -130,6 +130,11 @@ export const Plot_: React.FC<PlotProps> = ({
     }
     return formatted;
   };
+  const generateFileName = (spectra: Spectrum[]) =>
+    `${spectra
+      .map((s) => s.species.map((specie) => specie.molecule).join("_"))
+      .join("_")}_${spectra[0].database}`;
+
   return (
     <Plotly
       className="Plot"
@@ -186,6 +191,11 @@ export const Plot_: React.FC<PlotProps> = ({
         updatemenus,
         showlegend: true,
         legend: { orientation: "h", y: -0.6, x: 0 },
+      }}
+      config={{
+        toImageButtonOptions: {
+          filename: generateFileName(spectra),
+        },
       }}
     />
   );
