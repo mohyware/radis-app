@@ -6,11 +6,13 @@ from src.models.payload import Payload
 # An arbitrary broadening formula as NIST databank requires `lbfunc`
 def broad_arbitrary(**kwargs):
     """An arbitrary broadening formula for the Lorentzian component"""
-    HWHM = kwargs["pressure_atm"] * (296 / kwargs["Tgas"]) ** 0.7
+    hwhm = kwargs["pressure_atm"] * (296 / kwargs["Tgas"])**0.7
     shift = None
-    return HWHM, shift
+    return hwhm, shift
+
 
 def calculate_spectrum(payload: Payload):
+    """Calculate the spectrum using the RADIS library."""
     print(">> Payload : ")
     print(payload)
     spectrum = radis.calc_spectrum(
@@ -18,10 +20,12 @@ def calculate_spectrum(payload: Payload):
         payload.max_wavenumber_range * eval(payload.wavelength_units),
         molecule=[species.molecule for species in payload.species],
         mole_fraction={
-            species.molecule: species.mole_fraction for species in payload.species
+            species.molecule: species.mole_fraction
+            for species in payload.species
         },
         # TODO: Hard-coding "1,2,3" as the isotopologue for the time-being
-        isotope={species.molecule: "1,2,3" for species in payload.species} if payload.database != "nist" else 0,
+        isotope={species.molecule: "1,2,3" for species in payload.species}
+        if payload.database != "nist" else 0,
         pressure=payload.pressure * eval(payload.pressure_units),
         Tgas=payload.tgas,
         Tvib=payload.tvib,
@@ -31,7 +35,7 @@ def calculate_spectrum(payload: Payload):
         wstep="auto",
         databank=payload.database,
         use_cached=True,
-        lbfunc = broad_arbitrary if payload.database == "nist" else None,
+        lbfunc=broad_arbitrary if payload.database == "nist" else None,
         # TODO: add nist and kurucz as options here
         # pfsource=payload.database if payload.database == "nist" else None,
     )

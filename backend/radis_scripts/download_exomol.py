@@ -10,7 +10,7 @@ from radis.io.exomol import fetch_exomol
 EXOMOL_working_molecules = [
     'CO',
     'NO',
-    'AlO', 
+    'AlO',
     'HCl',
 ]
 
