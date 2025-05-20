@@ -99,7 +99,7 @@ jobs:
   coverage-comment:
     name: 📊 Coverage Comment
     needs: [changes, frontend-test, backend-test]
-    if: ${{ github.event_name == 'pull_request' && (needs.changes.outputs.frontend == 'true' || needs.changes.outputs.backend == 'true') }}
+    if: ${{ github.event_name == 'push' && (needs.changes.outputs.frontend == 'true' || needs.changes.outputs.backend == 'true') }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
