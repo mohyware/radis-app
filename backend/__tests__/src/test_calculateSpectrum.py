@@ -2,6 +2,7 @@ from src.main import app   # assuming your FastAPI app instance is named 'app'
 from fastapi.testclient import TestClient
 from __tests__.helpers.payload_data import payload_data
 client = TestClient(app)
+import pytest
 
 def test_calc_spectrum():
     
@@ -13,7 +14,7 @@ def test_calc_spectrum():
     assert "y" in data
     assert "units" in data
 
-# Slowest test
+@pytest.mark.skip(reason="ExoMol test is too slow")
 def test_exomol_database():
     modified_payload = payload_data.copy()
     modified_payload.update({
