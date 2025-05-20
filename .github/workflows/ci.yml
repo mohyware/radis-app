@@ -1,4 +1,3 @@
-# linting check of radis-app
 name: 🌱 CI
 
 on:
@@ -10,15 +9,35 @@ on:
       - main
 
 jobs:
-  frontend-test:
-    name: 🧪 frontend-ci
+  changes:
+    name: 🔍 Detect changes
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: frontend
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+      backend: ${{ steps.filter.outputs.backend }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
+      
+      - name: Check for file changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+            backend:
+              - 'backend/**'
+
+  frontend-test:
+    name: 🧪 frontend-ci
+    needs: changes
+    if: ${{ needs.changes.outputs.frontend == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -28,27 +47,36 @@ jobs:
 
       - name: Install Node.js dependencies
         run: yarn install --frozen-lockfile
+      
       - name: Linting check
         run: cd frontend && yarn lint
+      
       - name: Type check
         run: cd frontend && yarn type-check
+      
       - name: Run tests and coverage
         run: cd frontend && yarn test && yarn test:coverage
+      
       - name: ✅ Upload coverage to Codecov
         uses: codecov/codecov-action@v3.1.0
         with:
           flags: frontend
+
   backend-test:
     name: 🧪 backend-ci
+    needs: changes
+    if: ${{ needs.changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
+      
       - name: Set up python
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
+      
       - name: Install dependencies
         run: |
           cd backend
@@ -60,6 +88,7 @@ jobs:
           cd backend
           pytest
           coverage run --source=src -m pytest -v __tests__/ && coverage report -m && coverage html && coverage xml
+      
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
