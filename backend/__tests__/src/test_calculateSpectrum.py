@@ -29,6 +29,7 @@ def test_exomol_database():
     assert "y" in data
     assert "units" in data
 
+@pytest.mark.skip(reason="Nist test needs HITRAN web site credentials")
 def test_nist_database():
     modified_payload = {
         "min_wavenumber_range": 9679,
