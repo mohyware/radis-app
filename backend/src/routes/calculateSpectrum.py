@@ -30,6 +30,10 @@ async def calc_spectrum(payload: Payload):
         wunit = spectrum.get_waveunit()
         iunit = "default"
         xNan, yNan = spectrum.get(payload.mode, wunit=wunit, Iunit=iunit)
+        # if the specified units were nm, convert the spectrum range (cm-1 by default) to nm
+        if (payload.wavelength_units == 'u.nm'):
+            xNan = 1e7 / xNan
+            xNan = np.sort(xNan)
         # to remove the nan values from x and y
         x = xNan[~np.isnan(xNan)]
         y = yNan[~np.isnan(yNan)]
