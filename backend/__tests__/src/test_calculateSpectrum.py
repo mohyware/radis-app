@@ -12,5 +12,3 @@ def test_calc_spectrum():
     assert "x" in data
     assert "y" in data
     assert "units" in data
-
-
