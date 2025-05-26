@@ -21,7 +21,7 @@ class Payload(BaseModel):
         "transmittance",
         "radiance",
     ]
-    database: Literal["hitran", "geisa", "hitemp"]
+    database: Literal["hitran", "geisa", "hitemp", "exomol", "nist"]
     wavelength_units: Literal["1/u.cm", "u.nm"]
     pressure_units: Literal["u.bar", "u.mbar", "cds.atm", "u.torr", "u.mTorr", "u.Pa"]
     path_length_units: Literal["u.cm", "u.m", "u.km"]
