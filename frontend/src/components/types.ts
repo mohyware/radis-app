@@ -7,6 +7,8 @@ export enum Database {
   HITRAN = "hitran",
   GEISA = "geisa",
   HITEMP = "hitemp",
+  EXOMOL = "exomol",
+  NIST = "nist",
 }
 
 export type FormValues = {
