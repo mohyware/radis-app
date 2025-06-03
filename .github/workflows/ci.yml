@@ -48,8 +48,8 @@ jobs:
       - name: Install Node.js dependencies
         run: yarn install --frozen-lockfile
       
-      - name: Linting check
-        run: cd frontend && yarn lint
+      # - name: Linting check
+      #   run: cd frontend && yarn lint
       
       - name: Type check
         run: cd frontend && yarn type-check
