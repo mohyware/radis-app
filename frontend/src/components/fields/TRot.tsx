@@ -1,3 +1,4 @@
+import React from "react";
 import Input from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
@@ -24,7 +25,7 @@ export const TRot: React.FC = () => {
             value={field.value}
             error={!!fieldState.error}
             endDecorator={<InputAdornment position="end">K</InputAdornment>}
-            onKeyPress={(event: any) => {
+            onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => {
               if (event?.key === "-" || event?.key === "+") {
                 event.preventDefault();
               }

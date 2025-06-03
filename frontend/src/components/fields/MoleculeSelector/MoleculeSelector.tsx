@@ -16,7 +16,6 @@ import {
   moleculeOptionsHitemp,
 } from "./molecules";
 
-
 export interface MoleculeSelectorProps {
   validationError?: FieldError;
   onChange: (...event: string[]) => void;
