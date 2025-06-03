@@ -1,4 +1,4 @@
-import Switch from "@mui/joy/Switch";
+import Switch from "@mui/material/Switch";
 import useFromStore from "../../store/form";
 
 function UseNonEquilibriumCalculationsSwitch() {

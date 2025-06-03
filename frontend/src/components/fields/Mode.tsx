@@ -1,8 +1,8 @@
 import React from "react";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import Select from "@mui/joy/Select";
-import Option from "@mui/joy/Option";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -23,9 +23,9 @@ export const Mode: React.FC = () => {
             }}
             value={field.value}
           >
-            <Option value={"absorbance"}>Absorbance</Option>
-            <Option value={"radiance_noslit"}>Radiance</Option>
-            <Option value={"transmittance_noslit"}>Transmittance</Option>
+            <MenuItem value={"absorbance"}>Absorbance</MenuItem>
+            <MenuItem value={"radiance_noslit"}>Radiance</MenuItem>
+            <MenuItem value={"transmittance_noslit"}>Transmittance</MenuItem>
           </Select>
         )}
       />

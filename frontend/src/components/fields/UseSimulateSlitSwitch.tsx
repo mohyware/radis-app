@@ -1,9 +1,9 @@
-import { Switch } from "@mui/joy";
-import {  Controller, useFormContext } from "react-hook-form";
+import { Switch } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 import useFromStore from "../../store/form";
 
 function UseSimulateSlitSwitch() {
-  const { useSlit, setUseSlit } = useFromStore(); 
+  const { useSlit, setUseSlit } = useFromStore();
   const { control, setValue } = useFormContext();
 
   return (

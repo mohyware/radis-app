@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import Autocomplete from "@mui/joy/Autocomplete";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 import { Control, FieldError } from "react-hook-form";
 import {
   addSubscriptsToMolecule,
@@ -15,17 +16,6 @@ import {
   moleculeOptionsGesia,
   moleculeOptionsHitemp,
 } from "./molecules";
-
-
-export interface MoleculeSelectorProps {
-  validationError?: FieldError;
-  onChange: (...event: string[]) => void;
-  value: string;
-  control: Control<FormValues>;
-  autofocus?: boolean;
-  isNonEquilibrium: boolean;
-  databaseWatch: Database;
-}
 
 export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
   validationError,
@@ -66,9 +56,9 @@ export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
         onInputChange={(_, newInput) => {
           setInput(addSubscriptsToMolecule(newInput.toUpperCase()));
         }}
-        renderOption={(props, value) => {
-          return <li {...props}>{addSubscriptsToMolecule(value)}</li>;
-        }}
+        renderOption={(props, value) => (
+          <li {...props}>{addSubscriptsToMolecule(value)}</li>
+        )}
         onChange={(
           _: React.SyntheticEvent<Element, Event>,
           value: string | null
@@ -76,6 +66,15 @@ export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
           const newMolecule = value ? removeSubscriptsFromMolecule(value) : "";
           onChange(newMolecule);
         }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            error={validationError !== undefined}
+            helperText={validationError?.message}
+            label="Molecule"
+          />
+        )}
       />
     </FormControl>
   );

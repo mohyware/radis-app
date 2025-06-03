@@ -1,37 +1,36 @@
-import Option from "@mui/joy/Option";
-import Select from "@mui/joy/Select";
-import FormControl from "@mui/joy/FormControl";
-import {  Controller, useFormContext } from "react-hook-form";
+import React from "react";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { Control, Controller } from "react-hook-form";
+import { FormValues } from "../types";
 
+interface PathLengthUnitsProps {
+  control: Control<FormValues>;
+}
 
-
-export const PathLengthUnit: React.FC = () => {
-  const { control } = useFormContext();
+export const PathLengthUnit: React.FC<PathLengthUnitsProps> = ({ control }) => {
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <Controller
         name="path_length_units"
         defaultValue="u.cm"
         control={control}
-        render={({ field }) => (
+        render={({ field, formState }) => (
           <Select
             {...field}
-            variant="plain"
+            {...formState}
+            variant="standard"
+            labelId="mode-select-label"
             id="mode-select"
-            onChange={(_, value) => {
-              field.onChange(value);
-            }}
+            onChange={field.onChange}
             value={field.value}
-            slotProps={{
-              listbox: {
-                variant: "outlined",
-              },
-            }}
-            sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
+            label="Select"
+            style={{ color: "gray", marginTop: "15px" }}
           >
-            <Option value={"u.cm"}>cm</Option>
-            <Option value={"u.m"}>m</Option>
-            <Option value={"u.km"}>km</Option>
+            <MenuItem value={"u.cm"}>cm</MenuItem>
+            <MenuItem value={"u.m"}>m</MenuItem>
+            <MenuItem value={"u.km"}>km</MenuItem>
           </Select>
         )}
       />

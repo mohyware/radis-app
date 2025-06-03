@@ -1,7 +1,7 @@
-import Input from "@mui/joy/Input";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import FormHelperText from "@mui/joy/FormHelperText";
+import Input from "@mui/material/Input";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import FormHelperText from "@mui/material/FormHelperText";
 
 import InputAdornment from "@mui/material/InputAdornment";
 import { Controller, useFormContext } from "react-hook-form";

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Grid from "@mui/joy/Grid";
+import Grid from "@mui/material/Grid";
 import { useForm, FormProvider } from "react-hook-form";
 import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Button from "@mui/joy/Button";
+import Button from "@mui/material/Button";
 import ReactGA from "react-ga4";
 import { PlotSettings, Spectrum } from "../constants";
 import { formSchema } from "../modules/form-schema";
@@ -24,6 +24,8 @@ import { Species } from "./fields/Species/Species";
 import { DownloadTxtButton } from "./DownloadTxtButton";
 import UseNonEquilibriumCalculationsSwitch from "./fields/UseNonEquilibriumCalculationsSwitch";
 import UseSimulateSlitSwitch from "./fields/UseSimulateSlitSwitch";
+import { PressureUnit } from "./fields/PressureUnits";
+import { PathLengthUnit } from "./fields/PathLengthUnits";
 
 export interface Response<T> {
   data?: T;
@@ -322,29 +324,14 @@ export const Form: React.FunctionComponent<FormProps> = ({
             </>
           ) : null}
 
-          {isNonEquilibrium ? (
-            <Grid sm={8} lg={12}>
+          <Grid container spacing={1} alignItems="center">
+            <Grid item xs={12} sm={6} lg={6}>
               <Pressure />
             </Grid>
-          ) : (
-            <Grid sm={8} lg={12}>
-              <Pressure />
+            <Grid item xs={12} sm={6} lg={6}>
+              <PathLength />
             </Grid>
-          )}
-
-          {isNonEquilibrium ? (
-            <>
-              <Grid sm={8} lg={12}>
-                <PathLength />
-              </Grid>
-            </>
-          ) : (
-            <>
-              <Grid sm={8} lg={12}>
-                <PathLength />
-              </Grid>
-            </>
-          )}
+          </Grid>
 
           <Grid xs={12}>
             <Species

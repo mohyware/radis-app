@@ -1,9 +1,7 @@
-import { IconButton, Typography } from "@mui/joy";
-import { Popover } from "@mui/material";
+import { IconButton, Typography, Popover } from "@mui/material";
 import { useState } from "react";
 import InfoIcon from "@mui/icons-material/Info";
-
-
+import { palette } from "../constants";
 export const InfoPopover = () => {
   const [anchorEl, setAnchorEl] = useState<
     (EventTarget & HTMLButtonElement) | null
@@ -22,7 +20,7 @@ export const InfoPopover = () => {
   return (
     <div>
       <IconButton onClick={handleClick}>
-        <InfoIcon style={{ color: "#0A6ACA", fontSize: "30" }} />
+        <InfoIcon style={{ color: palette.primary.contrastText, fontSize: "30" }} />
       </IconButton>
       <Popover
         id={id}

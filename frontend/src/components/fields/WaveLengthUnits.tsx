@@ -1,15 +1,13 @@
-import Option from "@mui/joy/Option";
-import Select from "@mui/joy/Select";
-import FormControl from "@mui/joy/FormControl";
-import {  Controller, useFormContext } from "react-hook-form";
-
-
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import { Controller, useFormContext } from "react-hook-form";
 
 
 export const WaveLengthUnit: React.FC = () => {
   const { control } = useFormContext();
-  
-  
+
+
   return (
     <FormControl>
       <Controller
@@ -19,9 +17,9 @@ export const WaveLengthUnit: React.FC = () => {
         render={({ field }) => (
           <Select
             {...field}
-            variant="plain"
+            variant="standard"
             id="mode-select"
-            onChange={(_, value) => {
+            onChange={(value) => {
               field.onChange(value);
             }}
             value={field.value}
@@ -32,8 +30,8 @@ export const WaveLengthUnit: React.FC = () => {
             }}
             sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
           >
-            <Option value={"1/u.cm"}>cm⁻¹</Option>
-            <Option value={"u.nm"}>nm</Option>
+            <MenuItem value={"1/u.cm"}>cm⁻¹</MenuItem>
+            <MenuItem value={"u.nm"}>nm</MenuItem>
           </Select>
         )}
       />

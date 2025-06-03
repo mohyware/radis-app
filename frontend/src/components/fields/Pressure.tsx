@@ -1,12 +1,12 @@
 import React from "react"; // Add this line
 
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import FormHelperText from "@mui/joy/FormHelperText";
-import Input from "@mui/joy/Input";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Input from "@mui/material/Input";
 import { Controller, useFormContext } from "react-hook-form";
 
-import Divider from "@mui/joy/Divider";
+import Divider from "@mui/material/Divider";
 import { PressureUnit } from "./PressureUnits";
 
 export const Pressure: React.FC = () => {
@@ -27,10 +27,10 @@ export const Pressure: React.FC = () => {
             onChange={field.onChange}
             value={field.value}
             error={!!fieldState.error}
-            endDecorator={
+            endAdornment={
               <div>
                 <Divider orientation="vertical" />
-                <PressureUnit />
+                <PressureUnit control={control} />
               </div>
             }
           />

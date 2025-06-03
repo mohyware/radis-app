@@ -1,7 +1,7 @@
-import Option from "@mui/joy/Option";
-import Select from "@mui/joy/Select";
-import FormLabel from "@mui/joy/FormLabel";
-import FormControl from "@mui/joy/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
 import { Controller, useFormContext } from "react-hook-form";
 import { Database as TDatabase } from "../types";
 
@@ -23,9 +23,9 @@ export const Database: React.FC = () => {
             }}
             value={field.value}
           >
-            <Option value={TDatabase.HITRAN}>HITRAN</Option>
-            <Option value={TDatabase.GEISA}>GEISA</Option>
-            <Option value={TDatabase.HITEMP}>HITEMP</Option>
+            <MenuItem value={TDatabase.HITRAN}>HITRAN</MenuItem>
+            <MenuItem value={TDatabase.GEISA}>GEISA</MenuItem>
+            <MenuItem value={TDatabase.HITEMP}>HITEMP</MenuItem>
           </Select>
         )}
       />

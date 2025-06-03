@@ -1,11 +1,11 @@
 import React from "react";
-import Slider from "@mui/joy/Slider";
-import Input from "@mui/joy/Input";
+import Slider from "@mui/material/Slider";
+import Input from "@mui/material/Input";
 import { Controller, useFormContext } from "react-hook-form";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/joy/Divider";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
+import Divider from "@mui/material/Divider";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 import { FormValues } from "../types";
 import useFromStore from "../../store/form";
 import { WaveLengthUnit } from "./WaveLengthUnits";
@@ -23,7 +23,7 @@ export const WavenumberRangeSlider: React.FC = () => {
     setValue("min_wavenumber_range", lowerRange ?? minRange);
     setValue("max_wavenumber_range", upperRange ?? maxRange);
   }, [lowerRange, upperRange, setValue, minRange, maxRange]);
-  
+
   const handleSliderChange = (_event: Event, value: number | number[]) => {
     value = value as [number, number];
     setLowerRange(value[0]);
@@ -55,9 +55,9 @@ export const WavenumberRangeSlider: React.FC = () => {
         onChange(e.target.value === "" ? "" : Number(e.target.value))
       }
       onBlur={handleBlur}
-      endDecorator={
+      endAdornment={
         <React.Fragment>
-          <Divider orientation="vertical" />
+          <Divider orientation="vertical" sx={{ mr: 1 }} />
           <WaveLengthUnit />
         </React.Fragment>
       }

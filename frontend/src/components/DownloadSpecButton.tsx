@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@mui/joy/Button";
+import Button from "@mui/material/Button";
 
 interface DownloadSpecButtonProps {
   disabled: boolean;
