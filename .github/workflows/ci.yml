@@ -62,7 +62,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }} 
           flags: frontend
-          files: ./frontend/__tests__/coverage/lcov.info
+          files: ./frontend/coverage/lcov.info
           fail_ci_if_error: true             
           verbose: true     
 

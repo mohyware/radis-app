@@ -7,7 +7,7 @@ import { Controller, useFormContext } from "react-hook-form";
 
 export const TVib: React.FC = () => {
   const { control } = useFormContext();
-  
+
   return (
     <Controller
       name="tvib"
@@ -19,6 +19,7 @@ export const TVib: React.FC = () => {
           <Input
             {...field}
             id="tvib-input"
+            data-testid="tvib-testid"
             type="number"
             onChange={field.onChange}
             value={field.value}

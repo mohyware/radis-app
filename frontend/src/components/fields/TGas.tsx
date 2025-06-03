@@ -2,7 +2,7 @@ import Input from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
-import {  Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 
 
@@ -19,6 +19,7 @@ export const TGas: React.FC = () => {
           <Input
             {...field}
             id="tgas-input"
+            data-testid="tgas-testid"
             type="number"
             onChange={field.onChange}
             value={field.value}
