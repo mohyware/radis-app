@@ -49,7 +49,7 @@ jobs:
         run: yarn install --frozen-lockfile
       
       - name: Linting check
-        run: cd frontend && npm install -g eslint && yarn lint
+        run: cd frontend && yarn lint
       
       - name: Type check
         run: cd frontend && yarn type-check
