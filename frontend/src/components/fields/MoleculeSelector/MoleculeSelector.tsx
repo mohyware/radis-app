@@ -33,7 +33,7 @@ export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
   validationError,
   onChange,
   value,
-  autofocus = false,
+  // autofocus = false,
   isNonEquilibrium,
   databaseWatch,
 }) => {

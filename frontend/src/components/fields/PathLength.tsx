@@ -14,9 +14,10 @@ export const PathLength: React.FC = () => {
       control={control}
       render={({ field, fieldState }) => (
         <FormControl fullWidth>
-          <FormLabel>Path Length</FormLabel>
+          <FormLabel htmlFor="path-length-input">Path Length</FormLabel>
           <Input
             {...field}
+            id="path-length-input"
             type="number"
             onChange={field.onChange}
             value={field.value}

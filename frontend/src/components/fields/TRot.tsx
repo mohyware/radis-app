@@ -16,7 +16,7 @@ export const TRot: React.FC = () => {
       defaultValue={300}
       render={({ field, fieldState }) => (
         <FormControl fullWidth>
-          <FormLabel>TRot</FormLabel>
+          <FormLabel htmlFor="trot-input">TRot</FormLabel>
           <Input
             {...field}
             id="trot-input"

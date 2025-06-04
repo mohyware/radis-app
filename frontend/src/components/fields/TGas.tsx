@@ -16,7 +16,7 @@ export const TGas: React.FC = () => {
       defaultValue={300}
       render={({ field, fieldState }) => (
         <FormControl fullWidth>
-          <FormLabel>TGas</FormLabel>
+          <FormLabel htmlFor="tgas-input">TGas</FormLabel>
           <Input
             {...field}
             id="tgas-input"
