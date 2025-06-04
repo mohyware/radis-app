@@ -10,7 +10,7 @@ export const WaveLengthUnit: React.FC = () => {
 
 
   return (
-    <FormControl>
+    <FormControl >
       <Controller
         name="wavelength_units"
         defaultValue="1/u.cm"
@@ -24,12 +24,12 @@ export const WaveLengthUnit: React.FC = () => {
               field.onChange(value);
             }}
             value={field.value}
-            slotProps={{
-              listbox: {
-                variant: "outlined",
-              },
+            MenuProps={{
+              PaperProps: {
+                variant: "outlined"
+              }
             }}
-            sx={{ mr: -1.5, "&:hover": { bgcolor: "transparent" } }}
+            sx={{ "&:hover": { bgcolor: "transparent" } }}
           >
             <MenuItem value={"1/u.cm"}>cm⁻¹</MenuItem>
             <MenuItem value={"u.nm"}>nm</MenuItem>

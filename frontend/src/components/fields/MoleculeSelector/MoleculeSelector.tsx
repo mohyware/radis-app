@@ -57,16 +57,15 @@ export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
   }, [isNonEquilibrium, databaseWatch]);
 
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <FormLabel>Molecule</FormLabel>
       <Autocomplete
         id="molecule-selector"
-        variant="outlined"
         options={moleculeOptions.map((molecule) =>
           addSubscriptsToMolecule(molecule)
         )}
-        error={validationError !== undefined}
-        autoFocus={autofocus}
+        // error={validationError !== undefined}
+        autoComplete
         value={addSubscriptsToMolecule(value || "")}
         inputValue={input}
         onInputChange={(_, newInput) => {
@@ -88,7 +87,7 @@ export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
             variant="outlined"
             error={validationError !== undefined}
             helperText={validationError?.message}
-            label="Molecule"
+          // label="Molecule"
           />
         )}
       />

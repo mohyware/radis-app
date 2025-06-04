@@ -18,7 +18,7 @@ export const Pressure: React.FC = () => {
       control={control}
       defaultValue={1.01325}
       render={({ field, fieldState }) => (
-        <FormControl>
+        <FormControl fullWidth>
           <FormLabel>Pressure</FormLabel>
           <Input
             {...field}
@@ -31,7 +31,7 @@ export const Pressure: React.FC = () => {
             endAdornment={
               <div>
                 <Divider orientation="vertical" />
-                <PressureUnit control={control} />
+                <PressureUnit />
               </div>
             }
           />

@@ -9,7 +9,7 @@ import { Controller, useFormContext } from "react-hook-form";
 export const Mode: React.FC = () => {
   const { control } = useFormContext();
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <FormLabel>Mode</FormLabel>
       <Controller
         name="mode"
@@ -18,7 +18,7 @@ export const Mode: React.FC = () => {
         render={({ field }) => (
           <Select
             {...field}
-            onChange={(_, value) => {
+            onChange={(value) => {
               field.onChange(value);
             }}
             value={field.value}

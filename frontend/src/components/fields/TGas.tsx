@@ -15,7 +15,7 @@ export const TGas: React.FC = () => {
       control={control}
       defaultValue={300}
       render={({ field, fieldState }) => (
-        <FormControl>
+        <FormControl fullWidth>
           <FormLabel>TGas</FormLabel>
           <Input
             {...field}
@@ -25,7 +25,7 @@ export const TGas: React.FC = () => {
             onChange={field.onChange}
             value={field.value}
             error={!!fieldState.error}
-            endDecorator={"k"}
+            endAdornment={"k"}
             onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => {
               if (event?.key === "-" || event?.key === "+") {
                 event.preventDefault();

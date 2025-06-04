@@ -9,7 +9,7 @@ import { Database as TDatabase } from "../types";
 export const Database: React.FC = () => {
   const { control } = useFormContext();
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <FormLabel>Database</FormLabel>
       <Controller
         name="database"
@@ -19,7 +19,7 @@ export const Database: React.FC = () => {
           <Select
             {...field}
             {...formState}
-            onChange={(_, value) => {
+            onChange={(value) => {
               field.onChange(value);
             }}
             value={field.value}

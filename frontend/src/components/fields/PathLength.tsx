@@ -13,7 +13,7 @@ export const PathLength: React.FC = () => {
     <Controller
       control={control}
       render={({ field, fieldState }) => (
-        <FormControl>
+        <FormControl fullWidth>
           <FormLabel>Path Length</FormLabel>
           <Input
             {...field}
@@ -24,7 +24,7 @@ export const PathLength: React.FC = () => {
             endAdornment={
               <div>
                 <Divider orientation="vertical" />
-                <PathLengthUnit control={control as any} />
+                <PathLengthUnit />
               </div>
             }
           />

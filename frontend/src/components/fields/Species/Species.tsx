@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import Input from "@mui/material/Input";
+import Box from "@mui/material/Box";
 
 import { Controller, Control, useFieldArray } from "react-hook-form";
 import { MoleculeSelector } from "../MoleculeSelector/MoleculeSelector";
@@ -49,13 +50,20 @@ export const Species: React.FC<SpeciesProps> = ({
               )}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} lg={5}>
             <Controller
               name={`species.${index}.mole_fraction` as const}
               control={control}
               render={({ field: { onChange, value }, formState }) => (
-                <FormControl>
-                  <FormLabel>Mole Fraction</FormLabel>
+                <FormControl fullWidth>
+                  <FormLabel>
+                    <Box component="span" sx={{ display: { xs: 'none', lg: 'inline' } }}>
+                      Mole Fraction
+                    </Box>
+                    <Box component="span" sx={{ display: { xs: 'inline', lg: 'none' } }}>
+                      Fraction(m)
+                    </Box>
+                  </FormLabel>
                   <Input
                     id="mole-fraction-input"
                     error={!!formState.errors?.species?.[index]?.mole_fraction}
@@ -81,7 +89,7 @@ export const Species: React.FC<SpeciesProps> = ({
               )}
             />
           </Grid>
-          <Grid item xs={2} style={{ marginTop: 24 }}>
+          <Grid item xs={2} style={{ marginTop: 24 }} lg={1}>
             {index === 0 ? (
               <IconButton
                 color="primary"

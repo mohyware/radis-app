@@ -2,14 +2,11 @@ import React from "react";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { Control, Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { FormValues } from "../types";
 
-interface PressureUnitsProps {
-  control: Control<FormValues>;
-}
-
-export const PressureUnit: React.FC<PressureUnitsProps> = ({ control }) => {
+export const PressureUnit: React.FC = () => {
+  const { control } = useFormContext<FormValues>();
   return (
     <FormControl fullWidth>
       <Controller
@@ -26,7 +23,7 @@ export const PressureUnit: React.FC<PressureUnitsProps> = ({ control }) => {
             onChange={field.onChange}
             value={field.value}
             label="Select"
-            style={{ color: "gray", marginTop: "15px" }}
+            style={{ marginTop: "15px" }}
           >
             <MenuItem value={"u.bar"}>bar</MenuItem>
             <MenuItem value={"u.mbar"}>mbar</MenuItem>

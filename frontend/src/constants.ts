@@ -2,9 +2,9 @@ import { Species } from "./components/types";
 
 export const palette = {
   primary: {
-    light: "#6573c3",
-    main: "#3f51b5",
-    dark: "#2c387e",
+    light: "#1976D2",
+    main: "#1976D2",
+    dark: "#272727",
     contrastText: "#fff",
   },
   secondary: {

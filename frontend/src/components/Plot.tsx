@@ -218,6 +218,7 @@ export const Plot_: React.FC<PlotProps> = ({
           updatemenus,
           showlegend: true,
           legend: { orientation: "h", y: -0.6, x: 0 },
+          margin: { l: 90, r: 10 },
         }}
       />
     </>

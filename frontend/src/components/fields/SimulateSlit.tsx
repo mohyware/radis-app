@@ -15,7 +15,7 @@ export const SimulateSlit: React.FC = () => {
   return (
     <Controller
       render={({ field, fieldState }) => (
-        <FormControl>
+        <FormControl fullWidth>
           <FormLabel>Slit Size</FormLabel>
           <Input
             {...field}
@@ -24,7 +24,7 @@ export const SimulateSlit: React.FC = () => {
             onChange={field.onChange}
             value={field.value}
             error={!!fieldState.error}
-            endDecorator={
+            endAdornment={
               simulateSlitUnit ? (
                 <InputAdornment position="end">nm</InputAdornment>
               ) : (

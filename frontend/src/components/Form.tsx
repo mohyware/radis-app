@@ -24,8 +24,6 @@ import { Species } from "./fields/Species/Species";
 import { DownloadTxtButton } from "./DownloadTxtButton";
 import UseNonEquilibriumCalculationsSwitch from "./fields/UseNonEquilibriumCalculationsSwitch";
 import UseSimulateSlitSwitch from "./fields/UseSimulateSlitSwitch";
-import { PressureUnit } from "./fields/PressureUnits";
-import { PathLengthUnit } from "./fields/PathLengthUnits";
 
 export interface Response<T> {
   data?: T;
@@ -132,7 +130,7 @@ export const Form: React.FunctionComponent<FormProps> = ({
     endpoint: string,
     appendSpectrum = false
   ): Promise<void> => {
-    if (useSlit == true) {
+    if (useSlit === true) {
       if (data.mode === "radiance_noslit") {
         data.mode = "radiance";
       }
@@ -292,47 +290,45 @@ export const Form: React.FunctionComponent<FormProps> = ({
         onSubmit={handleSubmit((data) => onSubmit(data, `calculate-spectrum`))}
       >
         <Grid container spacing={3}>
-          <Grid xs={12} sm={8} md={5} lg={6}>
+          <Grid item xs={12} sm={6} lg={6}>
             <DatabaseField />
           </Grid>
-          <Grid xs={12} sm={8} md={5} lg={6}>
+          <Grid item xs={12} sm={6} lg={6}>
             <Mode />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <WavenumberRangeSlider />
           </Grid>
 
           {isNonEquilibrium ? (
-            <Grid sm={8} lg={4}>
+            <Grid item xs={12} lg={4}>
               <TGas />
             </Grid>
           ) : (
-            <Grid sm={8} lg={12}>
+            <Grid item xs={12} lg={12}>
               <TGas />
             </Grid>
           )}
 
           {isNonEquilibrium ? (
             <>
-              <Grid sm={8} lg={4}>
+              <Grid item xs={12} lg={4}>
                 <TRot />
               </Grid>
-              <Grid sm={8} lg={4}>
+              <Grid item xs={12} lg={4}>
                 <TVib />
               </Grid>
             </>
           ) : null}
 
-          <Grid container spacing={1} alignItems="center">
-            <Grid item xs={12} sm={6} lg={6}>
-              <Pressure />
-            </Grid>
-            <Grid item xs={12} sm={6} lg={6}>
-              <PathLength />
-            </Grid>
+          <Grid item xs={12} lg={6}>
+            <Pressure />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <PathLength />
           </Grid>
 
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <Species
               isNonEquilibrium={isNonEquilibrium}
               control={control}
@@ -341,29 +337,30 @@ export const Form: React.FunctionComponent<FormProps> = ({
           </Grid>
 
           {useSimulateSlitFunction ? (
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <UseSimulateSlitSwitch />
             </Grid>
           ) : null}
 
           {useSimulateSlitFunction ? (
             useSlit ? (
-              <Grid xs={12}>
+              <Grid item xs={12}>
                 <SimulateSlit />
               </Grid>
             ) : null
           ) : null}
           {showNonEquilibriumSwitch && (
-            <Grid xs={12}>
+            <Grid item xs={12}>
               <UseNonEquilibriumCalculationsSwitch />
             </Grid>
           )}
-          <Grid xs={6}>
+          <Grid item xs={6}>
             <CalcSpectrumButton />
           </Grid>
-          <Grid xs={6}>
+          <Grid item xs={6}>
             <Button
               fullWidth
+              variant="outlined"
               disabled={disableAddToPlotButton}
               onClick={handleSubmit((data) =>
                 onSubmit(data, `calculate-spectrum`, true)
@@ -372,7 +369,7 @@ export const Form: React.FunctionComponent<FormProps> = ({
               Add to plot
             </Button>
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <DownloadSpecButton
               disabled={disableDownloadButton}
               onClick={handleSubmit((data) => {
@@ -380,7 +377,7 @@ export const Form: React.FunctionComponent<FormProps> = ({
               })}
             />
           </Grid>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <DownloadTxtButton
               disabled={disableDownloadButton}
               onClick={handleSubmit((data) => {

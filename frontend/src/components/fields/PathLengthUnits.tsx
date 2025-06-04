@@ -22,7 +22,7 @@ export const PathLengthUnit: React.FC = () => {
             onChange={field.onChange}
             value={field.value}
             label="Select"
-            style={{ color: "gray", marginTop: "15px" }}
+            style={{ marginTop: "15px" }}
           >
             <MenuItem value={"u.cm"}>cm</MenuItem>
             <MenuItem value={"u.m"}>m</MenuItem>

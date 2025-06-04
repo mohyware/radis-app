@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
     <AppBar
       position="static"
       elevation={0}
-      style={{ backgroundColor: theme.palette.mode === "dark" ? palette.primary.dark : palette.primary.light, borderBottom: "1px solid #ccc" }}
+      style={{ backgroundColor: theme.palette.mode === "dark" ? palette.primary.dark : palette.primary.light }}
     >
       <Container maxWidth="xl">
         <Toolbar>
@@ -33,7 +33,6 @@ export const Header: React.FC = () => {
             <img src={logo} height={50} alt="Radish logo" />
           </Box>
           <Typography
-            // variant="h4"
             className={classes.title}
             style={{ color: theme.palette.mode === "dark" ? palette.primary.contrastText : palette.primary.contrastText, fontWeight: 1000 }}
           >

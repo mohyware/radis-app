@@ -15,7 +15,7 @@ export const TVib: React.FC = () => {
       control={control}
       defaultValue={300}
       render={({ field, fieldState }) => (
-        <FormControl>
+        <FormControl fullWidth>
           <FormLabel>TVib</FormLabel>
           <Input
             {...field}
