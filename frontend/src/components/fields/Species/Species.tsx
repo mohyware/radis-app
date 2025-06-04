@@ -85,20 +85,9 @@ export const Species: React.FC<SpeciesProps> = ({
             {index === 0 ? (
               <IconButton
                 color="primary"
-                onClick={() => {
-                  const formValues = getValues();
-                  append({ molecule: undefined, mole_fraction: undefined });
-                  reset(
-                    {
-                      ...formValues,
-                      species: [
-                        ...(formValues.species || []),
-                        { molecule: undefined, mole_fraction: undefined },
-                      ],
-                    },
-                    { keepDirty: false, keepTouched: false }
-                  );
-                }}
+                onClick={() =>
+                  append({ molecule: undefined, mole_fraction: undefined })
+                }
               >
                 <AddIcon />
               </IconButton>

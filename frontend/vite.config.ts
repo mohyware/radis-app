@@ -20,7 +20,7 @@ export default defineConfig(() => {
       coverage: {
         provider: "v8",
         reporter: ["text", "json", "html", "lcov"],
-        reportsDirectory: "./__tests__/coverage" /*coverage report*/,
+        reportsDirectory: "./coverage" /*coverage report*/,
       },
     },
     plugins: [react()],
