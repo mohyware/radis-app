@@ -10,13 +10,15 @@ export const Mode: React.FC = () => {
   const { control } = useFormContext();
   return (
     <FormControl fullWidth>
-      <FormLabel>Mode</FormLabel>
+      <FormLabel htmlFor="mode-select">Mode</FormLabel>
       <Controller
         name="mode"
         defaultValue="absorbance"
         control={control}
         render={({ field }) => (
           <Select
+            id="mode-select"
+            data-testid="mode-select-testid"
             {...field}
             onChange={(value) => {
               field.onChange(value);

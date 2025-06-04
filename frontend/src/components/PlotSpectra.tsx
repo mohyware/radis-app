@@ -38,6 +38,7 @@ export const PlotSpectra: React.FC = () => {
         <Grid item xs={12} sm={12} md={7} lg={7}>
           {loading ? (
             <div
+              data-testid="circular-progress-testid"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -50,6 +51,7 @@ export const PlotSpectra: React.FC = () => {
             spectra.length > 0 &&
             plotSettings && (
               <div
+                data-testid="plot-testid"
                 style={{
                   display: "flex",
 

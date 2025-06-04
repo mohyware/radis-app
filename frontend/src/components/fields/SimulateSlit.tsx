@@ -16,7 +16,7 @@ export const SimulateSlit: React.FC = () => {
     <Controller
       render={({ field, fieldState }) => (
         <FormControl fullWidth>
-          <FormLabel>Slit Size</FormLabel>
+          <FormLabel htmlFor="simulate_slit">Slit Size</FormLabel>
           <Input
             {...field}
             id="simulate_slit"
@@ -31,11 +31,6 @@ export const SimulateSlit: React.FC = () => {
                 <InputAdornment position="end">cm-1</InputAdornment>
               )
             }
-            onKeyPress={(event) => {
-              if (event?.key === "-" || event?.key === "+") {
-                event.preventDefault();
-              }
-            }}
           />
           {fieldState.error ? (
             <FormHelperText
