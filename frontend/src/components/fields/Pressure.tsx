@@ -23,6 +23,7 @@ export const Pressure: React.FC = () => {
           <Input
             {...field}
             id="pressure-input"
+            data-testid="pressure-input-testid"
             type="number"
             onChange={field.onChange}
             value={field.value}

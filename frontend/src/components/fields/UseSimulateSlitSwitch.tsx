@@ -1,3 +1,4 @@
+import React from "react";
 import { Switch } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 import useFromStore from "../../store/form";
@@ -16,7 +17,7 @@ function UseSimulateSlitSwitch() {
           endDecorator="Apply Instrumental Slit Function"
           data-testid="slit-switch-testid"
           checked={useSlit}
-          onChange={(event: any) => {
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             console.log(event.target.checked);
             setUseSlit(event.target.checked);
             field.onChange(event.target.checked);

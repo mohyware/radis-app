@@ -1,3 +1,4 @@
+import React from "react";
 import Input from "@mui/material/Input";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -19,12 +20,13 @@ export const TGas: React.FC = () => {
           <Input
             {...field}
             id="tgas-input"
+            data-testid="tgas-testid"
             type="number"
             onChange={field.onChange}
             value={field.value}
             error={!!fieldState.error}
             endDecorator={"k"}
-            onKeyPress={(event: any) => {
+            onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => {
               if (event?.key === "-" || event?.key === "+") {
                 event.preventDefault();
               }

@@ -1,6 +1,8 @@
+import React from "react";
 import { IconButton, Typography, Popover } from "@mui/material";
 import { useState } from "react";
 import InfoIcon from "@mui/icons-material/Info";
+
 import { palette } from "../constants";
 export const InfoPopover = () => {
   const [anchorEl, setAnchorEl] = useState<

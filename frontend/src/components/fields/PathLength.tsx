@@ -1,10 +1,11 @@
+import React from "react";
 import Input from "@mui/material/Input";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import { Controller, useFormContext } from "react-hook-form";
-import { PathLengthUnit } from "./PathLengthUnits";
 import Divider from "@mui/material/Divider";
+import { PathLengthUnit } from "./PathLengthUnits";
 
 export const PathLength: React.FC = () => {
   const { control } = useFormContext();
@@ -23,7 +24,7 @@ export const PathLength: React.FC = () => {
             endAdornment={
               <div>
                 <Divider orientation="vertical" />
-                <PathLengthUnit control={control} />
+                <PathLengthUnit control={control as any} />
               </div>
             }
           />
@@ -39,7 +40,6 @@ export const PathLength: React.FC = () => {
         </FormControl>
       )}
       name="path_length"
-      control={control}
       defaultValue={1}
     />
   );

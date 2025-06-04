@@ -1,15 +1,11 @@
 import React from "react";
-import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { Control, Controller } from "react-hook-form";
-import { FormValues } from "../types";
+import FormControl from "@mui/material/FormControl";
+import { Controller, useFormContext } from "react-hook-form";
 
-interface PathLengthUnitsProps {
-  control: Control<FormValues>;
-}
-
-export const PathLengthUnit: React.FC<PathLengthUnitsProps> = ({ control }) => {
+export const PathLengthUnit: React.FC = () => {
+  const { control } = useFormContext();
   return (
     <FormControl fullWidth>
       <Controller

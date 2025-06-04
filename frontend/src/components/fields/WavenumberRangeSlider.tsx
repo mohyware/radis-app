@@ -83,8 +83,8 @@ export const WavenumberRangeSlider: React.FC = () => {
         <Grid item xs={12} sm={8} md={5} lg={4}>
           <Slider
             value={[
-              lowerRange === "" ? minRange : lowerRange,
-              upperRange === "" ? maxRange : upperRange,
+              lowerRange === 0 ? minRange : lowerRange,
+              upperRange === 0 ? maxRange : upperRange,
             ]}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"

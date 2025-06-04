@@ -1,3 +1,4 @@
+import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormLabel from "@mui/material/FormLabel";
@@ -26,6 +27,8 @@ export const Database: React.FC = () => {
             <MenuItem value={TDatabase.HITRAN}>HITRAN</MenuItem>
             <MenuItem value={TDatabase.GEISA}>GEISA</MenuItem>
             <MenuItem value={TDatabase.HITEMP}>HITEMP</MenuItem>
+            <MenuItem value={TDatabase.EXOMOL}>EXOMOL</MenuItem>
+            <MenuItem value={TDatabase.NIST}>NIST</MenuItem>
           </Select>
         )}
       />
