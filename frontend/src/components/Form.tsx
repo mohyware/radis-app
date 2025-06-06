@@ -57,7 +57,6 @@ export const Form: React.FunctionComponent<FormProps> = ({
     useSlit,
     useSimulateSlitFunction,
     setUseSimulateSlitFunction,
-    simulateSlitUnit,
     setSimulateSlitUnit,
     disableAddToPlotButton,
     setDisableAddToPlotButton,

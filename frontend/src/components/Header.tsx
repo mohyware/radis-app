@@ -1,9 +1,10 @@
+import React from "react";
 import { Box, Container, IconButton, Typography } from "@mui/joy";
 import { AppBar, Toolbar } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useStyles } from "../App";
-import { InfoPopover } from "./InfoPopover";
 import logo from "../radis.png";
+import { InfoPopover } from "./InfoPopover";
 
 export const Header: React.FC = () => {
   const classes = useStyles();

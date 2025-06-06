@@ -4,7 +4,7 @@ import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
 import InputAdornment from "@mui/material/InputAdornment";
-import {Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import useFromStore from "../../store/form";
 
 export const SimulateSlit: React.FC = () => {

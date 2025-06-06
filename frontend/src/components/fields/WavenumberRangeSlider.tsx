@@ -23,7 +23,6 @@ export const WavenumberRangeSlider: React.FC = () => {
     setValue("min_wavenumber_range", lowerRange ?? minRange);
     setValue("max_wavenumber_range", upperRange ?? maxRange);
   }, [lowerRange, upperRange, setValue, minRange, maxRange]);
-  
   const handleSliderChange = (_event: Event, value: number | number[]) => {
     value = value as [number, number];
     setLowerRange(value[0]);
@@ -83,8 +82,8 @@ export const WavenumberRangeSlider: React.FC = () => {
         <Grid item xs={12} sm={8} md={5} lg={4}>
           <Slider
             value={[
-              lowerRange === "" ? minRange : lowerRange,
-              upperRange === "" ? maxRange : upperRange,
+              lowerRange === 0 ? minRange : lowerRange,
+              upperRange === 0 ? maxRange : upperRange,
             ]}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
