@@ -1,10 +1,10 @@
 import React from "react";
 import Plotly from "react-plotly.js";
 import { LayoutAxis } from "plotly.js";
+import { useColorScheme } from '@mui/joy/styles';
 import { PlotSettings, Spectrum } from "../constants";
 import { addSubscriptsToMolecule } from "../modules/molecule-subscripts";
 import { Species } from "./types";
-
 export interface PlotProps {
   spectra: Spectrum[];
   plotSettings: PlotSettings;
@@ -30,6 +30,7 @@ export const Plot_: React.FC<PlotProps> = ({
   spectra,
   plotSettings: { mode, units },
 }) => {
+  const { mode: colorMode } = useColorScheme();
   let modeLabel = "";
   if (mode === "absorbance") {
     modeLabel = "Absorbance";
@@ -48,6 +49,8 @@ export const Plot_: React.FC<PlotProps> = ({
     fixedrange: false,
   };
 
+  const darkMode = colorMode === "dark";
+
   //buttons to switch between log scale and linear scale
   const updatemenus = [
     {
@@ -59,6 +62,13 @@ export const Plot_: React.FC<PlotProps> = ({
       pad: { r: 10, t: 10 },
       direction: "left",
       showactive: true,
+      bgcolor: darkMode ? "#333" : "#eee",
+      bordercolor: darkMode ? "#555" : "#ccc",
+      borderwidth: 1,
+      font: {
+        color: darkMode ? "#fff" : "#000",
+      },
+
       buttons: [
         {
           label: "Linear Scale",
@@ -131,63 +141,87 @@ export const Plot_: React.FC<PlotProps> = ({
     return formatted;
   };
   return (
-    <Plotly
-      className="Plot"
-      data={spectra.map(
-        (
-          {
+    <>
+      <style>
+        {`
+        .js-plotly-plot .updatemenu-button rect {
+          fill: ${darkMode ? "#333" : "#eee"} !important;
+        }
+        .js-plotly-plot .updatemenu-button rect[style*="rgb(244, 250, 255)"] {
+          fill: ${darkMode ? "#555" : "#ddd"} !important;
+        }
+        .js-plotly-plot .updatemenu-button text {
+          fill: ${darkMode ? "#fff" : "#000"} !important;
+        }
+      `}
+      </style>
+      <Plotly
+        className="Plot"
+        data={spectra.map(
+          (
+            {
+              x,
+              y,
+              species,
+              database,
+              tgas,
+              trot,
+              tvib,
+              pressure,
+              pressure_units,
+              wavelength_units,
+            },
+            index
+          ) => ({
             x,
             y,
-            species,
-            database,
-            tgas,
-            trot,
-            tvib,
-            pressure,
-            pressure_units,
-            wavelength_units,
-          },
-          index
-        ) => ({
-          x,
-          y,
-          type: "scatter",
-          marker: { color: plotColors[index % plotColors.length] },
-          name: formatSpectrumName({
-            database,
-            species,
-            tgas,
-            trot,
-            tvib,
-            pressure,
-            pressure_units,
-            wavelength_units,
-          }),
-        })
-      )}
-      layout={{
-        width: 650,
-        height: 450,
-        title: spectra.length === 1 ? "Spectrum" : "Spectra",
-        font: { family: "Roboto", color: "#000" },
-        xaxis: {
-          autorange: true,
-          title: { text: waveLabel },
-          rangeslider: {
-            // TODO: Update typing in DefinitelyTyped
-            // @ts-ignore
+            type: "scatter",
+            marker: { color: plotColors[index % plotColors.length] },
+            name: formatSpectrumName({
+              database,
+              species,
+              tgas,
+              trot,
+              tvib,
+              pressure,
+              pressure_units,
+              wavelength_units,
+            }),
+          })
+        )}
+        layout={{
+          width: 650,
+          height: 450,
+          title: spectra.length === 1 ? "Spectrum" : "Spectra",
+          font: { family: "Roboto", color: darkMode ? "#fff" : "#000" },
+          plot_bgcolor: darkMode ? "#121212" : "#fff",
+          paper_bgcolor: darkMode ? "#121212" : "#fff",
+          xaxis: {
             autorange: true,
-            // @ts-ignore
-            yaxis: { rangemode: "auto" },
+            title: { text: waveLabel },
+            color: darkMode ? "#fff" : "#000",
+            gridcolor: darkMode ? "#444" : "#ccc",
+            rangeslider: {
+              // TODO: Update typing in DefinitelyTyped
+              // @ts-ignore
+              autorange: true,
+              // @ts-ignore
+              yaxis: { rangemode: "auto" },
+            },
+            type: "linear",
           },
-          type: "linear",
-        },
-        yaxis,
-        updatemenus,
-        showlegend: true,
-        legend: { orientation: "h", y: -0.6, x: 0 },
-      }}
-    />
+          yaxis: {
+            ...yaxis,
+            color: darkMode ? "#fff" : "#000",
+            gridcolor: darkMode ? "#444" : "#ccc",
+          },
+          updatemenus,
+          showlegend: true,
+          legend: { orientation: "h", y: -0.6, x: 0 },
+          margin: { l: 90, r: 10 },
+        }}
+      />
+    </>
   );
 };
 

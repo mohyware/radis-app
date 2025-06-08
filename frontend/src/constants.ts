@@ -15,6 +15,25 @@ export const palette = {
   },
 };
 
+export const JoyColorSchemes = {
+  dark: {
+    palette: {
+      background: {
+        body: '#121212',
+        surface: '#2a2a2a',
+      },
+    },
+  },
+  light: {
+    palette: {
+      background: {
+        body: '#ffffff',
+        surface: '#f5f5f5',
+      },
+    },
+  },
+}
+
 export interface PlotSettings {
   mode: string;
   units: string;

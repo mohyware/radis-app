@@ -3,8 +3,6 @@ import Input from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
-
-import InputAdornment from "@mui/material/InputAdornment";
 import { Controller, useFormContext } from "react-hook-form";
 
 export const TRot: React.FC = () => {
@@ -24,7 +22,7 @@ export const TRot: React.FC = () => {
             onChange={field.onChange}
             value={field.value}
             error={!!fieldState.error}
-            endDecorator={<InputAdornment position="end">K</InputAdornment>}
+            endDecorator="K"
             onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => {
               if (event?.key === "-" || event?.key === "+") {
                 event.preventDefault();

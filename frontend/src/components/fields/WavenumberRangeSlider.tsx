@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "@mui/joy/Slider";
 import Input from "@mui/joy/Input";
 import { Controller, useFormContext } from "react-hook-form";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/joy/Grid";
 import Divider from "@mui/joy/Divider";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
@@ -69,7 +69,7 @@ export const WavenumberRangeSlider: React.FC = () => {
         {isUnitChanged ? " Wavelength range (nm)" : " Wavenumber range (cm⁻¹)"}
       </FormLabel>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid xs={12} sm={8} md={5} lg={4}>
           <Controller
             name="min_wavenumber_range"
             control={control}
@@ -79,7 +79,7 @@ export const WavenumberRangeSlider: React.FC = () => {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid xs={12} sm={8} md={5} lg={4}>
           <Slider
             value={[
               lowerRange === 0 ? minRange : lowerRange,
@@ -91,7 +91,7 @@ export const WavenumberRangeSlider: React.FC = () => {
             max={maxRange}
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid xs={12} sm={8} md={5} lg={4}>
           <Controller
             name="max_wavenumber_range"
             control={control}
