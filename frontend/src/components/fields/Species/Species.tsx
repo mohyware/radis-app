@@ -4,8 +4,8 @@ import FormHelperText from "@mui/joy/FormHelperText";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
-import IconButton from "@mui/material/IconButton";
-import Grid from "@mui/material/Grid";
+import IconButton from "@mui/joy/IconButton";
+import Grid from "@mui/joy/Grid";
 import Input from "@mui/joy/Input";
 
 import { Controller, Control, useFieldArray } from "react-hook-form";
@@ -30,7 +30,7 @@ export const Species: React.FC<SpeciesProps> = ({
     <Grid container spacing={3}>
       {fields.map((field, index) => (
         <React.Fragment key={field.id}>
-          <Grid item xs={6}>
+          <Grid xs={6}>
             <Controller
               name={`species.${index}.molecule` as const}
               control={control}
@@ -49,7 +49,7 @@ export const Species: React.FC<SpeciesProps> = ({
               )}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid xs={4}>
             <Controller
               name={`species.${index}.mole_fraction` as const}
               control={control}
@@ -81,7 +81,7 @@ export const Species: React.FC<SpeciesProps> = ({
               )}
             />
           </Grid>
-          <Grid item xs={2} style={{ marginTop: 24 }}>
+          <Grid xs={2} style={{ marginTop: 24 }}>
             {index === 0 ? (
               <IconButton
                 color="primary"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/joy/Snackbar";
+import Alert from "@mui/joy/Alert";
 
 interface ErrorAlertInterface {
   message: string;
@@ -15,7 +15,7 @@ export const ErrorAlert: React.FC<ErrorAlertInterface> = ({ message }) => {
       onClose={() => setOpen(false)}
       key={message}
     >
-      <Alert severity="error">{message}</Alert>
+      <Alert color="danger">{message}</Alert>
     </Snackbar>
   );
 };

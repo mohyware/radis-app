@@ -3,7 +3,6 @@ import Input from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
-import InputAdornment from "@mui/material/InputAdornment";
 import { Controller, useFormContext } from "react-hook-form";
 import useFromStore from "../../store/form";
 
@@ -24,13 +23,7 @@ export const SimulateSlit: React.FC = () => {
             onChange={field.onChange}
             value={field.value}
             error={!!fieldState.error}
-            endDecorator={
-              simulateSlitUnit ? (
-                <InputAdornment position="end">nm</InputAdornment>
-              ) : (
-                <InputAdornment position="end">cm-1</InputAdornment>
-              )
-            }
+            endDecorator={simulateSlitUnit ? "nm" : "cm-1"}
             onKeyPress={(event) => {
               if (event?.key === "-" || event?.key === "+") {
                 event.preventDefault();
