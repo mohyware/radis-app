@@ -14,6 +14,11 @@ export const ErrorAlert: React.FC<ErrorAlertInterface> = ({ message }) => {
       open={open}
       onClose={() => setOpen(false)}
       key={message}
+      sx={{
+        background: "transparent",
+        boxShadow: "none",
+        border: "none",
+      }}
     >
       <Alert color="danger">{message}</Alert>
     </Snackbar>
