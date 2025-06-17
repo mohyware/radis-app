@@ -1,41 +1,66 @@
-import { Box, Container, IconButton, Typography } from "@mui/joy";
-import { AppBar, Toolbar } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Typography,
+  Sheet,
+  Container
+} from "@mui/joy";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { useStyles } from "../App";
 import { InfoPopover } from "./InfoPopover";
 import logo from "../radis.png";
+import { useColorScheme } from '@mui/joy/styles';
+import LightModeIcon from "@mui/icons-material/LightMode"; // Sun
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 export const Header: React.FC = () => {
-  const classes = useStyles();
+  const { mode, setMode } = useColorScheme();
   return (
-    <AppBar
-      position="static"
-      elevation={0}
-      style={{ backgroundColor: "white", borderBottom: "1px solid #ccc" }}
+    <Sheet
+      variant="plain"
+      sx={{
+        borderBottom: "1px solid #ccc",
+        backgroundColor: mode === "dark" ? "#272727" : "white",
+      }}
     >
-      <Container maxWidth="xl">
-        <Toolbar>
-          <Box m={1}>
+      <Container maxWidth="xl" sx={{ py: 1 }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <img src={logo} height={50} alt="Radish logo" />
+            <Typography level="h4" sx={{ fontWeight: 1000, color: mode === "dark" ? "white" : "black" }}>
+              Radis App
+            </Typography>
           </Box>
-          <Typography
-            // variant="h4"
-            className={classes.title}
-            style={{ fontWeight: 1000 }}
-          >
-            Radis App
-          </Typography>
-          <IconButton>
-            <GitHubIcon
-              style={{ color: "#0A6ACA", fontSize: "28" }}
+
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <IconButton
+              variant="plain"
               onClick={() =>
                 (window.location.href = "https://github.com/suzil/radis-app")
               }
-            />
-          </IconButton>
-          <InfoPopover />
-        </Toolbar>
+            >
+              <GitHubIcon sx={{ color: mode === "dark" ? "white" : "", fontSize: 28 }} />
+            </IconButton>
+            <IconButton
+              sx={{ ml: 1 }}
+              onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+            >
+              {mode === "dark" ? (
+                <DarkModeIcon />
+              ) : (
+                <LightModeIcon />
+              )}
+            </IconButton>
+            <InfoPopover />
+          </Box>
+        </Box>
       </Container>
-    </AppBar>
+    </Sheet>
   );
 };

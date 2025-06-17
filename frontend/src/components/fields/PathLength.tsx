@@ -1,13 +1,14 @@
+import React from "react";
 import Input from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
-import {  Controller, useFormContext } from "react-hook-form";
-import { PathLengthUnit } from "./PathLengthUnits";
+import { Controller, useFormContext } from "react-hook-form";
 import Divider from "@mui/joy/Divider";
+import { PathLengthUnit } from "./PathLengthUnits";
 
 export const PathLength: React.FC = () => {
-    const { control } = useFormContext();
+  const { control } = useFormContext();
   return (
     <Controller
       render={({ field, fieldState }) => (
@@ -22,7 +23,7 @@ export const PathLength: React.FC = () => {
             endDecorator={
               <div>
                 <Divider orientation="vertical" />
-                <PathLengthUnit  />
+                <PathLengthUnit />
               </div>
             }
           />

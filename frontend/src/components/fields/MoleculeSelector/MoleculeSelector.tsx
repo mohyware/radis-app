@@ -14,8 +14,9 @@ import {
   moleculeOptionsNonequimolecules,
   moleculeOptionsGesia,
   moleculeOptionsHitemp,
+  moleculeOptionsExomol,
+  moleculeOptionsNist,
 } from "./molecules";
-
 
 export interface MoleculeSelectorProps {
   validationError?: FieldError;
@@ -45,6 +46,10 @@ export const MoleculeSelector: React.FC<MoleculeSelectorProps> = ({
       setMoleculeOptions(moleculeOptionsGesia);
     } else if (databaseWatch === Database.HITEMP) {
       setMoleculeOptions(moleculeOptionsHitemp);
+    } else if (databaseWatch === Database.EXOMOL) {
+      setMoleculeOptions(moleculeOptionsExomol);
+    } else if (databaseWatch === Database.NIST) {
+      setMoleculeOptions(moleculeOptionsNist);
     } else {
       setMoleculeOptions(moleculeOptionsEquimolecules);
     }

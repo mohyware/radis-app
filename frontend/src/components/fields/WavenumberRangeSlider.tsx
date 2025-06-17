@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "@mui/joy/Slider";
 import Input from "@mui/joy/Input";
 import { Controller, useFormContext } from "react-hook-form";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/joy/Grid";
 import Divider from "@mui/joy/Divider";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
@@ -13,15 +13,15 @@ import { WaveLengthUnit } from "./WaveLengthUnits";
 export const WavenumberRangeSlider: React.FC = () => {
   const { control, setValue } = useFormContext();
   const { simulateSlitUnit: isUnitChanged } = useFromStore();
-  const minRange = isUnitChanged ? 1000 : 500;
-  const maxRange = isUnitChanged ? 20000 : 10000;
+  const minRange = isUnitChanged ? 300 : 1000;
+  const maxRange = isUnitChanged ? 10000 : 20000;
 
-  const [lowerRange, setLowerRange] = React.useState<number | any>(1900);
-  const [upperRange, setUpperRange] = React.useState<number | any>(2300);
+  const [lowerRange, setLowerRange] = React.useState<number>(1900);
+  const [upperRange, setUpperRange] = React.useState<number>(2300);
 
   React.useEffect(() => {
-    setValue("min_wavenumber_range", lowerRange === "" ? minRange : lowerRange);
-    setValue("max_wavenumber_range", upperRange === "" ? maxRange : upperRange);
+    setValue("min_wavenumber_range", lowerRange ?? minRange);
+    setValue("max_wavenumber_range", upperRange ?? maxRange);
   }, [lowerRange, upperRange, setValue, minRange, maxRange]);
   const handleSliderChange = (_event: Event, value: number | number[]) => {
     value = value as [number, number];
@@ -69,7 +69,7 @@ export const WavenumberRangeSlider: React.FC = () => {
         {isUnitChanged ? " Wavelength range (nm)" : " Wavenumber range (cm⁻¹)"}
       </FormLabel>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid xs={12} sm={8} md={5} lg={4}>
           <Controller
             name="min_wavenumber_range"
             control={control}
@@ -79,11 +79,11 @@ export const WavenumberRangeSlider: React.FC = () => {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid xs={12} sm={8} md={5} lg={4}>
           <Slider
             value={[
-              lowerRange === "" ? minRange : lowerRange,
-              upperRange === "" ? maxRange : upperRange,
+              lowerRange === 0 ? minRange : lowerRange,
+              upperRange === 0 ? maxRange : upperRange,
             ]}
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
@@ -91,7 +91,7 @@ export const WavenumberRangeSlider: React.FC = () => {
             max={maxRange}
           />
         </Grid>
-        <Grid item xs={12} sm={8} md={5} lg={4}>
+        <Grid xs={12} sm={8} md={5} lg={4}>
           <Controller
             name="max_wavenumber_range"
             control={control}

@@ -57,7 +57,6 @@ export const Form: React.FunctionComponent<FormProps> = ({
     useSlit,
     useSimulateSlitFunction,
     setUseSimulateSlitFunction,
-    simulateSlitUnit,
     setSimulateSlitUnit,
     disableAddToPlotButton,
     setDisableAddToPlotButton,
@@ -131,7 +130,7 @@ export const Form: React.FunctionComponent<FormProps> = ({
     endpoint: string,
     appendSpectrum = false
   ): Promise<void> => {
-    if (useSlit == true) {
+    if (useSlit === true) {
       if (data.mode === "radiance_noslit") {
         data.mode = "radiance";
       }

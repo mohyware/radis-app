@@ -19,8 +19,8 @@ export default defineConfig(() => {
       setupFiles: ["./src/setupTests.ts"],
       coverage: {
         provider: "v8",
-        reporter: ["text", "json", "html"],
-        reportsDirectory: "./__tests__/coverage" /*coverage report*/,
+        reporter: ["text", "json", "html", "lcov"],
+        reportsDirectory: "./coverage" /*coverage report*/,
       },
     },
     plugins: [react()],

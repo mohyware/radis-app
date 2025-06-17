@@ -31,33 +31,33 @@ const useFromStore = create<TFromState & TFromActions>()(
     disableDownloadButton: true,
     disableAddToPlotButton: true,
     toggleIsNonEquilibrium: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         isNonEquilibrium: value,
       })),
 
     toggleshowNonEquilibriumSwitch: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         showNonEquilibriumSwitch: value,
       })),
 
     setUseSlit: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         useSlit: value,
       })),
     setUseSimulateSlitFunction: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         useSimulateSlitFunction: value,
       })),
     setSimulateSlitUnit: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         simulateSlitUnit: value,
       })),
     setDisableDownloadButton: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         disableDownloadButton: value,
       })),
     setDisableAddToPlotButton: (value: boolean) =>
-      set((_) => ({
+      set(() => ({
         disableAddToPlotButton: value,
       })),
   }))

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import CircularProgress from "@mui/material/CircularProgress";
+import Grid from "@mui/joy/Grid";
+import CircularProgress from "@mui/joy/CircularProgress";
 import LoadingBar from "react-top-loading-bar";
 import { PlotSettings, Spectrum } from "../constants";
 import { Plot } from "./Plot";
@@ -24,7 +24,7 @@ export const PlotSpectra: React.FC = () => {
       />
       {error ? <ErrorAlert message={error} /> : null}
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={8} md={5} lg={5}>
+        <Grid xs={12} sm={8} md={5} lg={5}>
           <Form
             setPlotSettings={setPlotSettings}
             setError={setError}
@@ -35,7 +35,7 @@ export const PlotSpectra: React.FC = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12} md={7} lg={7}>
+        <Grid xs={12} sm={12} md={7} lg={7}>
           {loading ? (
             <div
               style={{
