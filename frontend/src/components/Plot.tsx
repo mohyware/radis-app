@@ -132,8 +132,8 @@ export const Plot_: React.FC<PlotProps> = ({
   };
   const generateFileName = (spectra: Spectrum[]) =>
     `${spectra
-      .map((s) => s.species.map((specie) => specie.molecule).join("_"))
-      .join("_")}_${spectra[0].database}`;
+      .map(s => `${s.species.map(specie => specie.molecule).join("_")}_${s.database}`)
+      .join("_")}`;
 
   return (
     <Plotly
